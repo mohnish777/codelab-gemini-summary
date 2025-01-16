@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878417190926",
+    "project_id": "gemini-jetnews-app",
+    "storage_bucket": "gemini-jetnews-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878417190926:android:fe81d0041e52be0caf5c5f",
+        "android_client_info": {
+          "package_name": "com.example.jetnews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJD_oLh8AXppSFrVA2LHArOh3l6D7Sbfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

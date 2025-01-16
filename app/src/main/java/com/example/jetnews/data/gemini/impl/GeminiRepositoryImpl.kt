@@ -18,15 +18,43 @@ package com.example.jetnews.data.gemini.impl
 
 import com.example.jetnews.data.gemini.GeminiRepository
 import com.example.jetnews.model.Post
+import com.google.firebase.Firebase
+import com.google.firebase.vertexai.type.HarmBlockThreshold
+import com.google.firebase.vertexai.type.HarmCategory
+import com.google.firebase.vertexai.type.SafetySetting
+import com.google.firebase.vertexai.type.generationConfig
+import com.google.firebase.vertexai.vertexAI
 
 class GeminiRepositoryImpl: GeminiRepository {
 
     // Instantiate GenerativeModel here
-    private val generativeModel = null
+    private val generativeModel = Firebase.vertexAI.generativeModel(
+        "gemini-1.5-flash",
+        generationConfig = generationConfig {
+            temperature = 0f
+        },
+        safetySettings = listOf(
+            SafetySetting(HarmCategory.HARASSMENT, HarmBlockThreshold.LOW_AND_ABOVE),
+            SafetySetting(HarmCategory.HATE_SPEECH, HarmBlockThreshold.LOW_AND_ABOVE),
+            SafetySetting(HarmCategory.SEXUALLY_EXPLICIT, HarmBlockThreshold.LOW_AND_ABOVE),
+            SafetySetting(HarmCategory.DANGEROUS_CONTENT, HarmBlockThreshold.LOW_AND_ABOVE),
+        )
+    )
 
     override suspend fun summarizePost(post: Post): String? {
         // Implement the summarization with Gemini API
-        return null
+        val postString = StringBuilder()
+        for (paragraph in post.paragraphs) {
+            postString.append(paragraph.text)
+        }
+
+        val prompt =
+            "Summarize the following article in 4 concise bullet points. " +
+                "Ensure each bullet point is specific, informative and relevant. " +
+                "Return just the bullet points as plain text. " +
+                "Use plain text, don't use markdown. \n $postString"
+
+        return generativeModel.generateContent(prompt).text
     }
 
 }

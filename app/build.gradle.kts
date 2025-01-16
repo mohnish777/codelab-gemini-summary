@@ -25,6 +25,10 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
     namespace = "com.example.jetnews"
 
+    kotlinOptions {
+        jvmTarget = "17" // Match the Java version
+    }
+
     defaultConfig {
         applicationId = "com.example.jetnews"
         minSdk = libs.versions.minSdk.get().toInt()
@@ -138,7 +142,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.window)
-
+    implementation(libs.firebase.vertexai)
     implementation(libs.google.android.material)
 
     androidTestImplementation(libs.junit)
