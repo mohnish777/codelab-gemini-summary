@@ -61,8 +61,10 @@ version-catalog-update = "0.8.4"
 vertex-ai = "16.0.0"
 firebase-bom = "33.4.0"
 google-service = "4.4.2"
+vertexai = "16.0.0"
 
 [libraries]
+firebase-vertexai = { module = "com.google.firebase:firebase-vertexai", version.ref = "vertexai"}
 accompanist-adaptive = { module = "com.google.accompanist:accompanist-adaptive", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist" }

@@ -139,7 +139,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.window)
-
+    implementation(libs.firebase.vertexai)
     implementation(libs.google.android.material)
 
     implementation(libs.vertex.ai)
